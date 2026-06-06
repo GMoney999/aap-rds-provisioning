@@ -48,8 +48,7 @@
 [all:vars]
 # For a comprehensive list of all inventory file variables, see:
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.7/install-assembly_appendix_inventory_file_vars
-hub_shared_data_path=172.16.249.142:/exports/hub
-hub_shared_data_mount_opts=rw,sync,hard
+hub_shared_data_path=/var/lib/hub
 
 
 # Common variables
@@ -66,7 +65,7 @@ bundle_dir='{{ lookup("ansible.builtin.env", "PWD") }}/bundle'
 gateway_admin_password=<set your own>
 gateway_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
 gateway_pg_database=aap_gateway
-gateway_pg_username=aap_admin
+gateway_pg_username=aap_gateway
 gateway_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP Controller
@@ -74,7 +73,7 @@ gateway_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 controller_admin_password=<set your own>
 controller_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
 controller_pg_database=aap_controller
-controller_pg_username=aap_admin
+controller_pg_username=aap_controller
 controller_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP Automation Hub
@@ -82,7 +81,7 @@ controller_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 hub_admin_password=<set your own>
 hub_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
 hub_pg_database=aap_hub
-hub_pg_username=aap_admin
+hub_pg_username=aap_hub
 hub_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP EDA Controller
