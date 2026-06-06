@@ -7,38 +7,29 @@
 # This section is for your AAP Gateway host(s)
 # -----------------------------------------------------
 [automationgateway]
-gateway1.example.org
-gateway2.example.org
+172.16.249.141
 
 # This section is for your AAP Controller host(s)
 # -----------------------------------------------------
 [automationcontroller]
-controller1.example.org
-controller2.example.org
+172.16.249.141
 
 # This section is for your AAP Execution host(s)
 # -----------------------------------------------------
-[execution_nodes]
-hop1.example.org receptor_type='hop'
-exec1.example.org
-exec2.example.org
+# [execution_nodes]
 
 # This section is for your AAP Automation Hub host(s)
 # -----------------------------------------------------
 [automationhub]
-hub1.example.org
-hub2.example.org
+172.16.249.141
 
 # This section is for your AAP EDA Controller host(s)
 # -----------------------------------------------------
-[automationeda]
-eda1.example.org
-eda2.example.org
+# [automationeda]
 
 # This section is for your AAP Automation Metrics Service host(s)
 # -----------------------------------------------------
-[automationmetrics]
-metrics1.example.org
+# [automationmetrics]
 
 # This section is for your AAP Lightspeed host(s)
 # -----------------------------------------------------
@@ -52,24 +43,18 @@ metrics1.example.org
 # mcpserver1.example.org
 
 [redis]
-gateway1.example.org
-gateway2.example.org
-hub1.example.org
-hub2.example.org
-eda1.example.org
-eda2.example.org
+172.16.249.141
 
 [all:vars]
 # For a comprehensive list of all inventory file variables, see:
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.7/install-assembly_appendix_inventory_file_vars
-hub_shared_data_path=172.16.249.142:/exports/hub
-hub_shared_data_mount_opts=rw,sync,hard
+hub_shared_data_path=/var/lib/hub
 
 
 # Common variables
 # -----------------------------------------------------
-postgresql_admin_username=<set your own>
-postgresql_admin_password=<set your own>
+postgresql_admin_username=aap_admin
+postgresql_admin_password=<RDS_PASSWORD_PLACEHOLDER>
 bundle_install=true
 # The bundle directory must include /bundle in the path
 bundle_dir='{{ lookup("ansible.builtin.env", "PWD") }}/bundle'
@@ -78,40 +63,40 @@ bundle_dir='{{ lookup("ansible.builtin.env", "PWD") }}/bundle'
 # AAP Gateway
 # -----------------------------------------------------
 gateway_admin_password=<set your own>
-gateway_pg_host=externaldb.example.org
-gateway_pg_database=<set your own>
-gateway_pg_username=<set your own>
-gateway_pg_password=<set your own>
+gateway_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
+gateway_pg_database=aap_gateway
+gateway_pg_username=aap_gateway
+gateway_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP Controller
 # -----------------------------------------------------
 controller_admin_password=<set your own>
-controller_pg_host=externaldb.example.org
-controller_pg_database=<set your own>
-controller_pg_username=<set your own>
-controller_pg_password=<set your own>
+controller_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
+controller_pg_database=aap_controller
+controller_pg_username=aap_controller
+controller_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP Automation Hub
 # -----------------------------------------------------
 hub_admin_password=<set your own>
-hub_pg_host=externaldb.example.org
-hub_pg_database=<set your own>
-hub_pg_username=<set your own>
-hub_pg_password=<set your own>
+hub_pg_host=<RDS_ENDPOINT_FROM_TERRAFORM>
+hub_pg_database=aap_hub
+hub_pg_username=aap_hub
+hub_pg_password=<RDS_PASSWORD_PLACEHOLDER>
 
 # AAP EDA Controller
 # -----------------------------------------------------
-eda_admin_password=<set your own>
-eda_pg_host=externaldb.example.org
-eda_pg_database=<set your own>
-eda_pg_username=<set your own>
-eda_pg_password=<set your own>
+# eda_admin_password=<set your own>
+# eda_pg_host=externaldb.example.org
+# eda_pg_database=<set your own>
+# eda_pg_username=<set your own>
+# eda_pg_password=<set your own>
 
 # AAP Automation Metrics Service
 # -----------------------------------------------------
-automationmetrics_pg_host=externaldb.example.org
-automationmetrics_pg_database=<set your own>
-automationmetrics_pg_username=<set your own>
-automationmetrics_pg_password=<set your own>
-automationmetrics_controller_read_pg_host=externaldb.example.org
-automationmetrics_controller_read_pg_password=<set your own>
+# automationmetrics_pg_host=externaldb.example.org
+# automationmetrics_pg_database=<set your own>
+# automationmetrics_pg_username=<set your own>
+# automationmetrics_pg_password=<set your own>
+# automationmetrics_controller_read_pg_host=externaldb.example.org
+# automationmetrics_controller_read_pg_password=<set your own>
